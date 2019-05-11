@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+
+
+    <title>Document</title>
+</head>
+
+<body class="bg-success">
+    <div class="container">
+        <div class="row justify-content-center mx-auto mt-5 mb-5 ">
+            <div class="col-8 text-center">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h3> Filtering Data </h3>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="search" name="search" onkeyup="myFunction()"
+                                placeholder="Masukan Data yang akan dicari:">
+                        </div>
+                        <table class="table myTable" id="myTable" widht="100%">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Rotation Period</th>
+                                    <th scope="col">Orbital Period</th>
+                                    <th scope="col">Diameter</th>
+                                    <th scope="col">Terrain</th>
+                                    <th scope="col">Population</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Aldeeran</td>
+                                    <td>24</td>
+                                    <td>364</td>
+                                    <td>12500</td>
+                                    <td>grassland, mountains</td>
+                                    <td>2000000000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Yavin IV</td>
+                                    <td>24</td>
+                                    <td>4818</td>
+                                    <td>10200</td>
+                                    <td>Jungle, rainforest</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Hoth</td>
+                                    <td>23</td>
+                                    <td>549</td>
+                                    <td>7200</td>
+                                    <td>tundra, ice caves, mountain ranges</td>
+                                    <td>unknown</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Dagobah</td>
+                                    <td>23</td>
+                                    <td>341</td>
+                                    <td>8900</td>
+                                    <td>swamp, jungles</td>
+                                    <td>unknown</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Bespin</td>
+                                    <td>12</td>
+                                    <td>5110</td>
+                                    <td>118000</td>
+                                    <td>gas giant</td>
+                                    <td>6000000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Endor</td>
+                                    <td>18</td>
+                                    <td>402</td>
+                                    <td>4900</td>
+                                    <td>forest, mountains, lakes</td>
+                                    <td>3000000000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>Naboo</td>
+                                    <td>26</td>
+                                    <td>312</td>
+                                    <td>12120</td>
+                                    <td>grassy hills, swamps, forests, mountains</td>
+                                    <td>4500000000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Coruscant</td>
+                                    <td>24</td>
+                                    <td>368</td>
+                                    <td>12240</td>
+                                    <td>cityscape, mountains</td>
+                                    <td>1000000000000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>Kamino</td>
+                                    <td>27</td>
+                                    <td>463</td>
+                                    <td>19720</td>
+                                    <td>ocean</td>
+                                    <td>1000000000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>Geonosis</td>
+                                    <td>30</td>
+                                    <td>256</td>
+                                    <td>11370</td>
+                                    <td>rock, desert, mountain, barren</td>
+                                    <td>100000000000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
+</body>
+
+</html>
